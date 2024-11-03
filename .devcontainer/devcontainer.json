@@ -1,0 +1,24 @@
+// For format details, see https://aka.ms/devcontainer.json. For config options, see the
+// README at: https://github.com/devcontainers/templates/tree/main/src/debian
+{
+	"name": "Debian",
+	// Or use a Dockerfile or Docker Compose file. More info: https://containers.dev/guide/dockerfile
+	"image": "mcr.microsoft.com/devcontainers/base:bullseye",
+	"features": {
+		"ghcr.io/devcontainers/features/hugo:1": {
+			"version": "latest"
+		}
+	},
+
+	// The Hugo sources are stored in the ./blog subdirectory.
+	"postStartCommand": "hugo server -s ./blog",
+
+	"workspaceMount": "source=${localWorkspaceFolder},target=/workspace,type=bind,Z",
+	"workspaceFolder": "/workspace",
+
+	"runArgs": [
+			"--userns=keep-id"
+	],
+
+	"containerUser": "vscode"
+}
