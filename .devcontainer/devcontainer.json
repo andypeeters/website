@@ -6,12 +6,18 @@
 	"image": "mcr.microsoft.com/devcontainers/base:bullseye",
 	"features": {
 		"ghcr.io/devcontainers/features/hugo:1": {
+			"version": "0.135.0"
+		},
+		"ghcr.io/devcontainers/features/node:1": {
 			"version": "latest"
 		}
 	},
 
+	// Source nvm.
+	"postCreateCommand": ". ${NVM_DIR}/nvm.sh && nvm install --lts",
+
 	// The Hugo sources are stored in the ./blog subdirectory.
-	"postStartCommand": "hugo server -s ./blog",
+	// "postStartCommand": "hugo server -s ./blog",
 
 	"workspaceMount": "source=${localWorkspaceFolder},target=/workspace,type=bind,Z",
 	"workspaceFolder": "/workspace",
